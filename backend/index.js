@@ -5,14 +5,15 @@ import path from "path";
 import axios from "axios";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+dotenv.config();
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import User from "./models/user.js";
 import Room from "./models/Room.js";
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Gemini API
 
-dotenv.config();
 
+console.log("THIS IS : ",process.env.FRONTEND_URL);
 
 const app = express();
 app.use(express.json());
@@ -51,7 +52,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [FRONTEND_URL, LOCAL_URL],
+    origin: [process.env.FRONTEND_URL, process.env.LOCAL_URL],
     methods: ["GET", "POST"],
     credentials: true
   },
