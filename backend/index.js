@@ -13,12 +13,11 @@ import { GoogleGenerativeAI } from "@google/generative-ai"; // Gemini API
 
 dotenv.config();
 
-const FRONTEND_URL = "https://dev-room-8sa2.vercel.app";
-const LOCAL_URL = "http://localhost:5173";
+
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: [FRONTEND_URL, LOCAL_URL],
+  origin: [process.env.FRONTEND_URL, process.env.LOCAL_URL],
   credentials: true
 }));
 
